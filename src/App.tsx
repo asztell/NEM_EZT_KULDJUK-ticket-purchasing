@@ -1,21 +1,21 @@
 import { Billing } from "./components/Billing";
 import { Checkout } from "./components/Checkout";
 import { Quantity } from "./components/Quantity";
-import { Shows } from "./components/Shows";
+import { Event } from "./components/Event";
 import { Summary } from "./components/Summary";
+import { TicketPurchasingProvider } from "./contexts/ticketPurchasing";
 import "./App.css";
 
 export function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <body>
-        <Shows />
+      <TicketPurchasingProvider>
+        <Event />
         <Quantity />
         <Billing />
-        <Checkout />
         <Summary />
-      </body>
+        <Checkout />
+      </TicketPurchasingProvider>
     </div>
   );
 }
