@@ -3,6 +3,7 @@ import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
 
 export function Summary() {
   const { event, ticketsCounter } = useContext(TicketPurchasingContext);
+
   return (
     <>
       <div style={{ margin: "20px" }}>
