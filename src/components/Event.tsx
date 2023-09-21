@@ -32,7 +32,13 @@ export function Event() {
         <select name="pets" id="event-select" onChange={onChange} value={event}>
           <option value="">--Please choose an event--</option>
           {events.map((event: any) => (
-            <option value={event.name}>{event.name}</option>
+            <option value={event.name} key={event.name + event.date}>
+              <div>{event.name}</div>
+              <br />
+              <div>{event.date + " at " + event.time}</div>
+              <br />
+              <div>{"$" + event.price}</div>
+            </option>
           ))}
         </select>
       </div>

@@ -1,3 +1,7 @@
 export function Checkout() {
-  return <div>Checkout</div>;
+  return (
+    <div>
+      <h2>Checkout</h2>
+    </div>
+  );
 }

@@ -1,3 +1,7 @@
 export function Billing() {
-  return <div>Billing</div>;
+  return (
+    <div>
+      <h2>Billing</h2>
+    </div>
+  );
 }
