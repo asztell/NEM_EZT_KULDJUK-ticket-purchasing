@@ -1,5 +1,3 @@
-import React from "react";
-
-export default function Checkout() {
+export function Checkout() {
   return <div>Checkout</div>;
 }

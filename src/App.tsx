@@ -1,12 +1,21 @@
+import { Billing } from "./components/Billing";
+import { Checkout } from "./components/Checkout";
+import { Quantity } from "./components/Quantity";
+import { Shows } from "./components/Shows";
+import { Summary } from "./components/Summary";
 import "./App.css";
 
-function App() {
+export function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <body></body>
+      <body>
+        <Shows />
+        <Quantity />
+        <Billing />
+        <Checkout />
+        <Summary />
+      </body>
     </div>
   );
 }
-
-export default App;

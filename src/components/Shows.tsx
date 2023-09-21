@@ -1,5 +1,3 @@
-import React from "react";
-
-export default function Shows() {
+export function Shows() {
   return <div>Shows</div>;
 }
