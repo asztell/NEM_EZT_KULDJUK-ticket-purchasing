@@ -1,8 +1,4 @@
-import { Billing } from "./components/Billing";
-import { Checkout } from "./components/Checkout";
-import { Quantity } from "./components/Quantity";
-import { Event } from "./components/Event";
-import { Summary } from "./components/Summary";
+import { Billing, Checkout, Event, Quantity, Summary } from "./components";
 import { TicketPurchasingProvider } from "./contexts/ticketPurchasing";
 import "./App.css";
 

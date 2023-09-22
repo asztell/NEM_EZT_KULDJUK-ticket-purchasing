@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
 
 export function Event() {
   const { event, updateEvent } = useContext(TicketPurchasingContext);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -15,21 +15,29 @@ export function Event() {
           setEvents(result);
         },
         (error) => {
-          setError(error);
+          // setError(error);
         }
       );
   }, []);
 
-  function onChange(event: any) {
-    updateEvent(event.target.value);
-  }
+  const handleEventChange = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      updateEvent(event.target.value);
+    },
+    [updateEvent]
+  );
 
   return (
     <>
       <h2>Event</h2>
       <div style={{ margin: "20px" }}>
         <label htmlFor="event-select">Choose an event:</label>
-        <select name="pets" id="event-select" onChange={onChange} value={event}>
+        <select
+          name="pets"
+          id="event-select"
+          onChange={handleEventChange}
+          value={event}
+        >
           <option value="">--Please choose an event--</option>
           {events.map((event: any) => (
             <option value={event.name} key={event.name + event.date}>
