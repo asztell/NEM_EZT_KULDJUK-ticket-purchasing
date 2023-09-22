@@ -7,7 +7,7 @@ export function Event() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/events`)
+    fetch(`http://localhost:8080/events`) // since the context provides the events, it should be the one populating the events.
       .then((res) => res.json())
       .then(
         (result) => {
