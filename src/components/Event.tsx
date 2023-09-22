@@ -2,9 +2,9 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
 
 export function Event() {
-  const { event, updateEvent } = useContext(TicketPurchasingContext);
-  // const [error, setError] = useState(null);
-  const [events, setEvents] = useState([]);
+  const { events, selectedEvent, updateEvents, updateSelectedEvent } =
+    useContext(TicketPurchasingContext);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:8080/events`)
@@ -12,31 +12,32 @@ export function Event() {
       .then(
         (result) => {
           console.log(result);
-          setEvents(result);
+          updateEvents(result);
         },
         (error) => {
-          // setError(error);
+          setError(error);
         }
       );
-  }, []);
+  }, [updateEvents]);
 
   const handleEventChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
-      updateEvent(event.target.value);
+      updateSelectedEvent(event.target.value);
     },
-    [updateEvent]
+    [updateSelectedEvent]
   );
 
   return (
     <>
       <h2>Event</h2>
+      {error && <div>{error}</div>}
       <div style={{ margin: "20px" }}>
         <label htmlFor="event-select">Choose an event:</label>
         <select
           name="pets"
           id="event-select"
           onChange={handleEventChange}
-          value={event}
+          value={selectedEvent}
         >
           <option value="">--Please choose an event--</option>
           {events.map((event: any) => (

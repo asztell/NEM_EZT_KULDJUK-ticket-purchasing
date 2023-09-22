@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
 
 export type CardInfoType = {
   cardNumber: string;
@@ -8,12 +8,14 @@ export type CardInfoType = {
 };
 
 export type TicketPurchasingContextType = {
-  event: string;
+  selectedEvent: string;
+  events: string[];
   ticketsCounter: number;
   cardInfo: CardInfoType;
-  updateEvent: (event: string) => void;
+  updateSelectedEvent: (selectedEvent: string) => void;
+  updateEvents: (events: string[]) => void;
   updateTicketsCounter: (ticketsCounter: number) => void;
-  updateCardInfo: (cardInfo: any) => void;
+  updateCardInfo: (cardInfo: CardInfoType) => void;
 };
 
 export const TicketPurchasingContext =
@@ -25,7 +27,8 @@ export function TicketPurchasingProvider({
   children: React.ReactNode;
 }) {
   const [ticketsCounter, setTicketsCounter] = useState(0);
-  const [event, setEvent] = useState("");
+  const [selectedEvent, setSelectedEvent] = useState("");
+  const [events, setEvents] = useState<string[]>([]);
   const [cardInfo, setCardInfo] = useState({
     cardNumber: "",
     cardType: "",
@@ -33,28 +36,45 @@ export function TicketPurchasingProvider({
     securityCodeValid: false,
   });
 
-  function updateTicketsCounter(ticketsCounter: number) {
+  const updateTicketsCounter = useCallback((ticketsCounter: number) => {
     setTicketsCounter(
       (prevTicketsCounter) => prevTicketsCounter + ticketsCounter
     );
-  }
+  }, []);
 
-  function updateEvent(event: string) {
-    setEvent(event);
-  }
+  const updateSelectedEvent = useCallback((selectedEvent: string) => {
+    setSelectedEvent(selectedEvent);
+  }, []);
 
-  function updateCardInfo(cardInfo: CardInfoType) {
+  const updateEvents = useCallback((events: string[]) => {
+    setEvents(events);
+  }, []);
+
+  const updateCardInfo = useCallback((cardInfo: CardInfoType) => {
     setCardInfo(cardInfo);
-  }
+  }, []);
 
-  const value = {
-    event,
+  const value = useMemo(() => {
+    return {
+      selectedEvent,
+      events,
+      ticketsCounter,
+      cardInfo,
+      updateSelectedEvent,
+      updateEvents,
+      updateTicketsCounter,
+      updateCardInfo,
+    };
+  }, [
+    selectedEvent,
+    events,
     ticketsCounter,
     cardInfo,
-    updateEvent,
+    updateSelectedEvent,
+    updateEvents,
     updateTicketsCounter,
     updateCardInfo,
-  };
+  ]);
 
   return (
     <TicketPurchasingContext.Provider value={value}>
