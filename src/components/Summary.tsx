@@ -6,7 +6,7 @@ export function Summary() {
 
   return (
     <>
-      <div style={{ margin: "20px" }}>
+      <div style={{ margin: "20px" }}> // unwrapped reference type and inline style
         <h2>Summary</h2>
         <p>Event: {event}</p>
         <p>Tickets: {ticketsCounter}</p>

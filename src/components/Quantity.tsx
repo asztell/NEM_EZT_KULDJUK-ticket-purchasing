@@ -6,21 +6,21 @@ export function Quantity() {
     TicketPurchasingContext
   );
 
-  function handleDecrement() {
+  function handleDecrement() { // unwrapped reference type
     if (ticketsCounter > 0) updateTicketsCounter(-1);
   }
 
-  function handleIncrement() {
+  function handleIncrement() { // unwrapped reference type
     updateTicketsCounter(1);
   }
 
   return (
     <>
       <h2>Quantity</h2>
-      <div style={{ margin: "30px" }}>
+      <div style={{ margin: "30px" }}> // unwrapped reference type and inline style
         <button
           id="decrement-btn"
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: "10px" }} // unwrapped reference type and inline style
           onClick={handleDecrement}
         >
           -
@@ -28,7 +28,7 @@ export function Quantity() {
         <span id="counter-value">{ticketsCounter}</span>
         <button
           id="increment-btn"
-          style={{ marginLeft: "10px" }}
+          style={{ marginLeft: "10px" }} // unwrapped reference type and inline style
           onClick={handleIncrement}
         >
           +

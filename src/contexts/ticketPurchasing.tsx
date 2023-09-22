@@ -8,23 +8,23 @@ export type TicketPurchasingContextType = {
 };
 
 export const TicketPurchasingContext =
-  createContext<TicketPurchasingContextType>(undefined as any);
+  createContext<TicketPurchasingContextType>(undefined as any); // no any
 
-export function TicketPurchasingProvider({ children }: any) {
+export function TicketPurchasingProvider({ children }: any) { // no any
   const [ticketsCounter, setTicketsCounter] = useState(0);
   const [event, setEvent] = useState("");
 
-  function updateTicketsCounter(ticketsCounter: number) {
+  function updateTicketsCounter(ticketsCounter: number) { // unwrapped reference type
     setTicketsCounter(
       (prevTicketsCounter) => prevTicketsCounter + ticketsCounter
     );
   }
 
-  function updateEvent(event: string) {
+  function updateEvent(event: string) { // unwrapped reference type
     setEvent(event);
   }
 
-  const value = {
+  const value = { // unwrapped reference type
     event,
     ticketsCounter,
     updateEvent,

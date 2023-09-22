@@ -13,7 +13,7 @@ app.use(cors());
 
 routes(app, fs);
 
-dotenv.config();
+dotenv.config(); // unused, redundant
 const port = process.env.SERVER_PORT;
 const server = app.listen(port, () => {
   console.log(

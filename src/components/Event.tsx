@@ -20,7 +20,7 @@ export function Event() {
       );
   }, []);
 
-  function onChange(event: any) {
+  function onChange(event: any) { // unwrapped reference type
     updateEvent(event.target.value);
   }
 
@@ -31,7 +31,7 @@ export function Event() {
         <label htmlFor="event-select">Choose an event:</label>
         <select name="pets" id="event-select" onChange={onChange} value={event}>
           <option value="">--Please choose an event--</option>
-          {events.map((event: any) => (
+          {events.map((event: any) => ( // any
             <option value={event.name} key={event.name + event.date}>
               <div>{event.name}</div>
               <br />
