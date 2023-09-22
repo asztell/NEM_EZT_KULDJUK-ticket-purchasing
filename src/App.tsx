@@ -1,4 +1,4 @@
-import { Billing } from "./components/Billing";
+import { Billing } from "./components/Billing"; // index reexport for handling import mess
 import { Checkout } from "./components/Checkout";
 import { Quantity } from "./components/Quantity";
 import { Event } from "./components/Event";

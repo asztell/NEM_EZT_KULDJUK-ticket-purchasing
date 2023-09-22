@@ -7,7 +7,7 @@ export function Event() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/events`)
+    fetch(`http://localhost:8080/events`) // since the context provides the events, it should be the one populating the events.
       .then((res) => res.json())
       .then(
         (result) => {
@@ -20,7 +20,7 @@ export function Event() {
       );
   }, []);
 
-  function onChange(event: any) {
+  function onChange(event: any) { // unwrapped reference type
     updateEvent(event.target.value);
   }
 
@@ -31,7 +31,7 @@ export function Event() {
         <label htmlFor="event-select">Choose an event:</label>
         <select name="pets" id="event-select" onChange={onChange} value={event}>
           <option value="">--Please choose an event--</option>
-          {events.map((event: any) => (
+          {events.map((event: any) => ( // any
             <option value={event.name} key={event.name + event.date}>
               <div>{event.name}</div>
               <br />

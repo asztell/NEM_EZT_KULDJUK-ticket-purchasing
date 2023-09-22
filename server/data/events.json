@@ -2,9 +2,9 @@
   {
     "name": "Zambo Jimmy in concert",
     "ISODate": "2024-01-01T00:00:00.000Z",
-    "date": "January 1, 2024",
-    "time": "8:00 PM EST",
-    "price": "200"
+    "date": "January 1, 2024", // redundant and repeating; server should not know or care or make assumptions about the user's timezone
+    "time": "8:00 PM EST", // redundant and repeating; server should not know or care or make assumptions about the user's timezone
+    "price": "200" // can be number
   },
   {
     "name": "Gangszta Zolee live!",
