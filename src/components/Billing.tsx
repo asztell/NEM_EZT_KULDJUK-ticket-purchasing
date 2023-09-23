@@ -33,14 +33,6 @@ export function Billing() {
   //     // TODO / MAYBE show security code validation on blur
   //   }, [securityCode, validateSecurityCode]);
 
-  const handleSubmit = useCallback(() => {
-    console.log("Submitting...");
-    // this should be a POST request to the server
-    // on success, the server should return a 200 status code
-    // and the client should be redirected to the confirmation page
-    // on failure, the server should return a 400 status code
-  }, []);
-
   return (
     <div className="Billing">
       <h2>Billing</h2>
@@ -69,17 +61,6 @@ export function Billing() {
         style={{ marginBottom: "20px" }}
       />
       <span>{cardInfo.securityCodeValid}</span>
-      <br />
-      <button
-        onClick={handleSubmit}
-        disabled={
-          cardInfo.cardType === "" ||
-          cardInfo.cardType === "Invalid" ||
-          !cardInfo.securityCodeValid
-        }
-      >
-        Purchase Tickets
-      </button>
     </div>
   );
 }

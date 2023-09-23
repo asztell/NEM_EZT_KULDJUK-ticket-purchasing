@@ -4,6 +4,11 @@ import { EventsPage } from "./EventsPage";
 import { CheckoutPage } from "./CheckoutPage";
 import { HomePage } from "./HomePage";
 import { ConfirmationPage } from "./ConfirmationPage";
+import {
+  ConfirmationPending,
+  ConfirmationSuccess,
+  ConfirmationFailure,
+} from "../components";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +36,20 @@ export const router = createBrowserRouter([
       {
         path: "/confirmation",
         element: <ConfirmationPage />,
+        children: [
+          {
+            path: "/confirmation/pending",
+            element: <ConfirmationPending />,
+          },
+          {
+            path: "/confirmation/success",
+            element: <ConfirmationSuccess />,
+          },
+          {
+            path: "/confirmation/failure",
+            element: <ConfirmationFailure />,
+          },
+        ],
       },
     ],
   },

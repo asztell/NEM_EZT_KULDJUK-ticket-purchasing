@@ -11,6 +11,15 @@ const routes = (app, fs) => {
       res.send(JSON.parse(data));
     });
   });
+
+  app.post("/checkout", (req, res) => {
+    console.log("POST /checkout");
+    fs.readFile(dataPath, "utf8", (err, data) => {
+      if (err) throw err;
+      console.log("data", data);
+      res.send(JSON.parse(data));
+    });
+  });
 };
 
 module.exports = routes;

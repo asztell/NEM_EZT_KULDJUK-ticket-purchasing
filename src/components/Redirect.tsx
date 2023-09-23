@@ -6,20 +6,29 @@ export function Redirect({
   disabled,
   label,
   className,
+  onClick,
 }: {
   to: string;
   disabled?: boolean;
   label: string;
   className?: string;
+  onClick?: () => void;
 }) {
   const navigate = useNavigate();
-  const onClick = useCallback(() => navigate(to), [navigate, to]);
+  const handleButtonClick = useCallback(() => {
+    onClick && onClick();
+    navigate(to);
+  }, [onClick, navigate, to]);
 
-  const linkClassName = "Redirect" + className ? " " + className : "";
+  const linkClassName = "Redirect" + (className ? " " + className : "");
 
   return (
     <div>
-      <button disabled={disabled} onClick={onClick} className={linkClassName}>
+      <button
+        disabled={disabled}
+        onClick={handleButtonClick}
+        className={linkClassName}
+      >
         {label}
       </button>
     </div>

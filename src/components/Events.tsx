@@ -8,24 +8,6 @@ export function Events() {
   );
   const { events, error } = useContext(EventsContext);
   console.log(events);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:8080/events`)
-  //     .then((res) => {
-  //       if (!res.ok) {
-  //         throw res;
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((result) => {
-  //       console.log(result);
-  //       updateEvents(result);
-  //     })
-  //     .catch((error) => {
-  //       setError(error);
-  //     });
-  // }, [updateEvents]);
 
   const handleEventChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -41,7 +23,7 @@ export function Events() {
       <div style={{ margin: "20px" }}>
         <label htmlFor="event-select">Choose an event:</label>
         <select
-          name="pets"
+          name="event-select"
           id="event-select"
           onChange={handleEventChange}
           value={selectedEvent}
