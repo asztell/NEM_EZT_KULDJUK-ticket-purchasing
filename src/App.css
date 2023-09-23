@@ -20,7 +20,7 @@ body {
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +31,24 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.Events,
+.Billing,
+.Quantity,
+.Summary,
+.Checkout {
+  border: 1px solid red;
+}
+
+.Events-Page-To-Home-Page {
+  float: left;
+  margin-left: 20%;
+}
+
+.Events-Page-To-Checkout-Page {
+  float: right;
+  margin-right: 20%;
 }
 
 @keyframes App-logo-spin {

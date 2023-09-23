@@ -15,7 +15,7 @@ export function Quantity() {
   }, [updateTicketsCounter]);
 
   return (
-    <>
+    <div className="Quantity">
       <h2>Quantity</h2>
       <div style={{ margin: "30px" }}>
         <button
@@ -34,6 +34,6 @@ export function Quantity() {
           +
         </button>
       </div>
-    </>
+    </div>
   );
 }

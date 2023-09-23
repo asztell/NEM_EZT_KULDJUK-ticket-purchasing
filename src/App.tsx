@@ -1,17 +1,19 @@
-import { Billing, Checkout, Event, Quantity, Summary } from "./components";
+import { Outlet } from "react-router-dom";
 import { TicketPurchasingProvider } from "./contexts/ticketPurchasing";
+import { EventsProvider } from "./contexts/events";
 import "./App.css";
 
 export function App() {
   return (
     <div className="App">
-      <TicketPurchasingProvider>
-        <Event />
-        <Quantity />
-        <Billing />
-        <Summary />
-        <Checkout />
-      </TicketPurchasingProvider>
+      <header className="App-header">
+        <h1>Ticket Purchasing App</h1>
+      </header>
+      <EventsProvider>
+        <TicketPurchasingProvider>
+          <Outlet />
+        </TicketPurchasingProvider>
+      </EventsProvider>
     </div>
   );
 }

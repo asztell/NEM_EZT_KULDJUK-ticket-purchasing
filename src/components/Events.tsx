@@ -1,24 +1,31 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext } from "react";
+import { EventsContext } from "../contexts/events";
 import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
 
-export function Event() {
-  const { events, selectedEvent, updateEvents, updateSelectedEvent } =
-    useContext(TicketPurchasingContext);
-  const [error, setError] = useState(null);
+export function Events() {
+  const { selectedEvent, updateSelectedEvent } = useContext(
+    TicketPurchasingContext
+  );
+  const { events, error } = useContext(EventsContext);
+  console.log(events);
+  // const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetch(`http://localhost:8080/events`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-          updateEvents(result);
-        },
-        (error) => {
-          setError(error);
-        }
-      );
-  }, [updateEvents]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:8080/events`)
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         throw res;
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((result) => {
+  //       console.log(result);
+  //       updateEvents(result);
+  //     })
+  //     .catch((error) => {
+  //       setError(error);
+  //     });
+  // }, [updateEvents]);
 
   const handleEventChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -28,7 +35,7 @@ export function Event() {
   );
 
   return (
-    <>
+    <div className="Events">
       <h2>Event</h2>
       {error && <div>{error}</div>}
       <div style={{ margin: "20px" }}>
@@ -51,6 +58,6 @@ export function Event() {
           ))}
         </select>
       </div>
-    </>
+    </div>
   );
 }
