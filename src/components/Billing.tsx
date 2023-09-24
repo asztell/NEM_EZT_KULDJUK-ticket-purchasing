@@ -1,5 +1,5 @@
 import { useContext, useCallback } from "react";
-import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
+import { TicketPurchasingContext } from "../contexts";
 
 export function Billing() {
   const { cardInfo, updateCardInfo } = useContext(TicketPurchasingContext);
@@ -34,7 +34,12 @@ export function Billing() {
   //   }, [securityCode, validateSecurityCode]);
 
   return (
-    <div className="Billing">
+    <div
+      className="Billing"
+      style={{
+        flexBasis: "60%",
+      }}
+    >
       <h2>Billing</h2>
       <label
         htmlFor="card-number"
