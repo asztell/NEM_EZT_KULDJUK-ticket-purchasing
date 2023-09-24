@@ -54,7 +54,12 @@ export function Summary() {
   }, [selectedEvent, ticketsCounter, cardInfo, navigate]);
 
   return (
-    <div className="Summary">
+    <div
+      className="Summary"
+      style={{
+        flexBasis: "35%",
+      }}
+    >
       <h2>Summary</h2>
       <p>Event: {selectedEvent}</p>
       <p>Tickets: {ticketsCounter}</p>
