@@ -105,16 +105,13 @@ body {
 }
 
 .Payment {
-  /* padding: 0px 24px 24px 24px; */
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
 }
 .Payment > h2,
 .Payment > label,
 .Payment > input {
-  display: flex;
   flex-basis: 100%;
-  /* flex-wrap: wrap; */
-  /* align-content: flex-start; */
 }
 
 .Checkout-Page {
@@ -147,6 +144,9 @@ label {
   margin-bottom: 8px;
   flex-basis: 100%;
 }
+.Payment-Form-Label {
+  margin-bottom: 0px;
+}
 
 input[type="text"] {
   background-color: rgb(255, 255, 255);
@@ -154,7 +154,8 @@ input[type="text"] {
   border: 1px solid rgb(153, 153, 153);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px 0px inset;
   font-size: 16px;
-  height: 44px;
+  /* height: 44px; */
+  line-height: 35px;
   margin-top: 4px;
   outline: none;
   padding: 4px 32px 4px 16px;
@@ -168,6 +169,18 @@ input[type="checkbox"] {
   margin-right: 8px;
   margin-top: 4px;
   margin: 10px 0px 0px 0px;
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1); /* IE */
+  -moz-transform: scale(1); /* FF */
+  -webkit-transform: scale(1); /* Safari and Chrome */
+  -o-transform: scale(1); /* Opera */
+  transform: scale(1);
+  padding: 10px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  border: 1px solid rgb(153, 153, 153);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px 0px inset;
 }
 
 .gxFWPY {

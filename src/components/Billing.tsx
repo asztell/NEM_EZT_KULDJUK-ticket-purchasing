@@ -71,6 +71,7 @@ export function Billing() {
         </div>
         <label
           htmlFor="card-number"
+          className="Payment-Form-Label"
           // style={{ marginRight: "10px", marginBottom: "20px" }}
         >
           Card Number
@@ -84,7 +85,7 @@ export function Billing() {
         />
         <span>{cardInfo.cardType}</span>
         <br />
-        <label style={{ marginRight: "10px" }}>Security Code</label>
+        <label className="Payment-Form-Label">Security Code</label>
         <input
           type="text"
           onChange={handleSecurityCodeChanges}
@@ -99,6 +100,7 @@ export function Billing() {
         <h2 className="Section-Header">Payment</h2>
         <label
           htmlFor="card-number"
+          className="Payment-Form-Label"
           // style={{ marginRight: "10px", marginBottom: "20px" }}
         >
           Card Number
@@ -112,7 +114,7 @@ export function Billing() {
         />
         <span>{cardInfo.cardType}</span>
         <br />
-        <label style={{ marginRight: "10px" }}>Security Code</label>
+        <label className="Payment-Form-Label">Security Code</label>
         <input
           type="text"
           onChange={handleSecurityCodeChanges}
@@ -127,6 +129,7 @@ export function Billing() {
         <h2 className="Section-Header">Payment</h2>
         <label
           htmlFor="card-number"
+          className="Payment-Form-Label"
           // style={{ marginRight: "10px", marginBottom: "20px" }}
         >
           Card Number
@@ -140,7 +143,7 @@ export function Billing() {
         />
         <span>{cardInfo.cardType}</span>
         <br />
-        <label style={{ marginRight: "10px" }}>Security Code</label>
+        <label className="Payment-Form-Label">Security Code</label>
         <input
           type="text"
           onChange={handleSecurityCodeChanges}
