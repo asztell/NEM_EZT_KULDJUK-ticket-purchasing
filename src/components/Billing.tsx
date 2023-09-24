@@ -34,12 +34,7 @@ export function Billing() {
   //   }, [securityCode, validateSecurityCode]);
 
   return (
-    <div
-      className="Billing"
-      style={{
-        flexBasis: "60%",
-      }}
-    >
+    <div className="Billing">
       <h2>Billing</h2>
       <label
         htmlFor="card-number"
