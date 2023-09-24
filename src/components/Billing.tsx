@@ -1,5 +1,5 @@
 import { useContext, useCallback } from "react";
-import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
+import { TicketPurchasingContext } from "../contexts";
 
 export function Billing() {
   const { cardInfo, updateCardInfo } = useContext(TicketPurchasingContext);

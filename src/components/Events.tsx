@@ -1,13 +1,11 @@
 import React, { useCallback, useContext } from "react";
-import { EventsContext } from "../contexts/events";
-import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
+import { EventsContext, TicketPurchasingContext } from "../contexts";
 
 export function Events() {
   const { selectedEvent, updateSelectedEvent } = useContext(
     TicketPurchasingContext
   );
   const { events, error } = useContext(EventsContext);
-  console.log(events);
 
   const handleEventChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -31,11 +29,7 @@ export function Events() {
           <option value="">--Please choose an event--</option>
           {events.map((event: any) => (
             <option value={event.name} key={event.name + event.date}>
-              <div>{event.name}</div>
-              <br />
-              <div>{event.date + " at " + event.time}</div>
-              <br />
-              <div>{"$" + event.price}</div>
+              <span>{`${event.name} - ${event.date} at ${event.time} - $${event.price}`}</span>
             </option>
           ))}
         </select>

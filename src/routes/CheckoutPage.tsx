@@ -1,12 +1,12 @@
-import { Billing, Summary, Redirect } from "../components";
+import { Billing, Summary, LinkButton } from "../components";
 
 export function CheckoutPage() {
   return (
     <div>
       <Billing />
       <Summary />
-      <Redirect to="/events" label="Back to Events" />
-      <Redirect to="/" label="Home Page" />
+      <LinkButton to="/events" label="Back to Events" />
+      <LinkButton to="/" label="Home Page" />
     </div>
   );
 }

@@ -1,19 +1,18 @@
 import { useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
-import { Redirect } from "./Redirect";
+import { TicketPurchasingContext } from "../contexts";
+// import { Redirect } from "./Redirect";
 
 export function Summary() {
   const { selectedEvent, ticketsCounter, cardInfo } = useContext(
     TicketPurchasingContext
   );
   const navigate = useNavigate();
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     console.log("Submitting...");
-    // this should be a POST request to the server
-    // on success, the server should return a 200 status code
-    // and the client should be redirected to the confirmation page
-    // on failure, the server should return a 400 status code
+    // start spinner (loading)
+
+    // TODO: if time permits refactor to try/catch with async/await
     fetch("http://localhost:8080/checkout", {
       method: "POST",
       headers: {
@@ -29,8 +28,7 @@ export function Summary() {
       .then((response) => {
         console.log("/checkout response", response);
         if (!response.ok) {
-          navigate("/confirmation/error", { state: response });
-          //   throw response;
+          throw response;
         }
         return response.json();
       })
@@ -40,7 +38,19 @@ export function Summary() {
       .catch((error) => {
         navigate("/confirmation/error", { state: error });
         console.log(error);
+      })
+      .finally(() => {
+        // stop spinner/loading (in case user comes back to this page)
       });
+
+    //   try {
+    //     const response = await fetch('/')
+    //     const data = await response.json()
+    //     const response2 = await fetch('/2', data)
+    //     const data2 = await response2.json()
+    //   } catch (error) {
+
+    //   }
   }, [selectedEvent, ticketsCounter, cardInfo, navigate]);
 
   return (
@@ -50,7 +60,7 @@ export function Summary() {
       <p>Tickets: {ticketsCounter}</p>
       <p>Card Number: {cardInfo.cardNumber}</p>
       <p>Security Code: {cardInfo.securityCode}</p>
-      <Redirect
+      {/* <Redirect
         to="/confirmation/pending"
         label="Purchase Tickets"
         disabled={
@@ -60,8 +70,8 @@ export function Summary() {
         }
         className="Purchase-Tickets"
         onClick={handleSubmit}
-      />
-      {/* <button
+      /> */}
+      <button
         onClick={handleSubmit}
         disabled={
           cardInfo.cardType === "" ||
@@ -70,7 +80,7 @@ export function Summary() {
         }
       >
         Purchase Tickets
-      </button> */}
+      </button>
     </div>
   );
 }
