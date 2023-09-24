@@ -1,25 +1,23 @@
 import { useContext } from "react";
-import { Events, Quantity, LinkButton } from "../components";
-import { TicketPurchasingContext } from "../contexts";
+import { Events, Quantity, Redirect } from "../components";
+import { TicketPurchasingContext } from "../contexts/ticketPurchasing";
 
 export function EventsPage() {
   const { selectedEvent, ticketsCounter } = useContext(TicketPurchasingContext);
-  const disabledLinkButton = selectedEvent === "" || ticketsCounter === 0;
+  const disabledRedirect = selectedEvent === "" || ticketsCounter === 0;
 
   return (
-    <div style={{ border: "1px solid black" }}>
-      <div className="Events-Page">
-        <Events />
-        <Quantity />
-      </div>
-      <LinkButton
+    <div>
+      <Events />
+      <Quantity />
+      <Redirect
         to="/"
         label="< Home Page"
         className="Events-Page-To-Home-Page"
       />
-      <LinkButton
+      <Redirect
         to="/checkout"
-        disabled={disabledLinkButton}
+        disabled={disabledRedirect}
         label="Next >"
         className="Events-Page-To-Checkout-Page"
       />
