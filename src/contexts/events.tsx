@@ -37,10 +37,6 @@ export function EventsProvider({ children }: { children: React.ReactNode }) {
     };
   }, [events, error]);
 
-  //   if (!events) {
-  //     return null;
-  //   }
-
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>
   );
