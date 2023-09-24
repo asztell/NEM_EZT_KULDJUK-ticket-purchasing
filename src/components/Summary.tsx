@@ -54,13 +54,9 @@ export function Summary() {
   }, [selectedEvent, ticketsCounter, cardInfo, navigate]);
 
   return (
-    <div
-      className="Summary"
-      style={{
-        flexBasis: "35%",
-      }}
-    >
-      <h2>Summary</h2>
+    <div className="Summary Section">
+      {/* <div> */}
+      <h2>Total</h2>
       <p>Event: {selectedEvent}</p>
       <p>Tickets: {ticketsCounter}</p>
       <p>Card Number: {cardInfo.cardNumber}</p>
@@ -76,6 +72,10 @@ export function Summary() {
         className="Purchase-Tickets"
         onClick={handleSubmit}
       /> */}
+      <input type="checkbox" name="termsOfUse" />
+      <label htmlFor="termsOfUse">
+        I have read and agree to the current <a href="#">Terms of Use</a>
+      </label>
       <button
         className="Purchase-Tickets-Button"
         onClick={handleSubmit}
@@ -85,8 +85,9 @@ export function Summary() {
           !cardInfo.securityCodeValid
         }
       >
-        Purchase Tickets
+        Place Order
       </button>
+      {/* </div> */}
     </div>
   );
 }

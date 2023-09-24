@@ -7,8 +7,11 @@ export function EventsPage() {
   const disabledLinkButton = selectedEvent === "" || ticketsCounter === 0;
 
   return (
-    <div style={{ border: "1px solid black" }}>
-      <div className="Events-Page">
+    <div
+      className="Events-Page Page Section"
+      // style={{ border: "1px solid black" }}
+    >
+      <div>
         <Events />
         <Quantity />
       </div>

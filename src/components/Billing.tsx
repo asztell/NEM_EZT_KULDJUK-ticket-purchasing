@@ -34,38 +34,123 @@ export function Billing() {
   //   }, [securityCode, validateSecurityCode]);
 
   return (
-    <div
-      className="Billing"
-      style={{
-        flexBasis: "60%",
-      }}
-    >
-      <h2>Billing</h2>
-      <label
-        htmlFor="card-number"
-        style={{ marginRight: "10px", marginBottom: "20px" }}
-      >
-        Card Number
-      </label>
-      <input
-        type="text"
-        onChange={handleCardNumberChanges}
-        // onBlur={handleCardNumberBlur}
-        value={cardInfo.cardNumber}
-        style={{ marginBottom: "10px" }}
-      />
-      <span>{cardInfo.cardType}</span>
-      <br />
-      <label style={{ marginRight: "10px" }}>Security Code</label>
-      <input
-        type="text"
-        onChange={handleSecurityCodeChanges}
-        // onBlur={handleSecurityCodeBlur}
-        value={cardInfo.securityCode}
-        maxLength={3}
-        style={{ marginBottom: "20px" }}
-      />
-      <span>{cardInfo.securityCodeValid}</span>
+    <div className="Billing ">
+      <div className="Payment Section">
+        <h2 className="Section-Header">Payment</h2>
+        <div data-tid="accepted-cards" className="sc-kuiCay grIRYc">
+          <div
+            // logo="american-express"
+            aria-label="american-express"
+            role="img"
+            className="sc-jwulOH gxFWPY"
+          ></div>
+          <div
+            // logo="visa"
+            aria-label="visa"
+            role="img"
+            className="sc-jwulOH ROGrU"
+          ></div>
+          <div
+            // logo="master-card"
+            aria-label="master-card"
+            role="img"
+            className="sc-jwulOH iCqfCk"
+          ></div>
+          <div
+            // logo="discover"
+            aria-label="discover"
+            role="img"
+            className="sc-jwulOH iWogNW"
+          ></div>
+          <div
+            // logo="diners-club"
+            aria-label="diners-club"
+            role="img"
+            className="sc-jwulOH hnmQKn"
+          ></div>
+        </div>
+        <label
+          htmlFor="card-number"
+          // style={{ marginRight: "10px", marginBottom: "20px" }}
+        >
+          Card Number
+        </label>
+        <input
+          type="text"
+          onChange={handleCardNumberChanges}
+          // onBlur={handleCardNumberBlur}
+          value={cardInfo.cardNumber}
+          // style={{ marginBottom: "10px" }}
+        />
+        <span>{cardInfo.cardType}</span>
+        <br />
+        <label style={{ marginRight: "10px" }}>Security Code</label>
+        <input
+          type="text"
+          onChange={handleSecurityCodeChanges}
+          // onBlur={handleSecurityCodeBlur}
+          value={cardInfo.securityCode}
+          maxLength={3}
+          // style={{ marginBottom: "20px" }}
+        />
+        <span>{cardInfo.securityCodeValid}</span>
+      </div>
+      <div className="Payment Section">
+        <h2 className="Section-Header">Payment</h2>
+        <label
+          htmlFor="card-number"
+          // style={{ marginRight: "10px", marginBottom: "20px" }}
+        >
+          Card Number
+        </label>
+        <input
+          type="text"
+          onChange={handleCardNumberChanges}
+          // onBlur={handleCardNumberBlur}
+          value={cardInfo.cardNumber}
+          // style={{ marginBottom: "10px" }}
+        />
+        <span>{cardInfo.cardType}</span>
+        <br />
+        <label style={{ marginRight: "10px" }}>Security Code</label>
+        <input
+          type="text"
+          onChange={handleSecurityCodeChanges}
+          // onBlur={handleSecurityCodeBlur}
+          value={cardInfo.securityCode}
+          maxLength={3}
+          // style={{ marginBottom: "20px" }}
+        />
+        <span>{cardInfo.securityCodeValid}</span>
+      </div>
+      <div className="Payment Section">
+        <h2 className="Section-Header">Payment</h2>
+        <label
+          htmlFor="card-number"
+          // style={{ marginRight: "10px", marginBottom: "20px" }}
+        >
+          Card Number
+        </label>
+        <input
+          type="text"
+          onChange={handleCardNumberChanges}
+          // onBlur={handleCardNumberBlur}
+          value={cardInfo.cardNumber}
+          // style={{ marginBottom: "10px" }}
+        />
+        <span>{cardInfo.cardType}</span>
+        <br />
+        <label style={{ marginRight: "10px" }}>Security Code</label>
+        <input
+          type="text"
+          onChange={handleSecurityCodeChanges}
+          // onBlur={handleSecurityCodeBlur}
+          value={cardInfo.securityCode}
+          maxLength={3}
+          // style={{ marginBottom: "20px" }}
+        />
+        <span>{cardInfo.securityCodeValid}</span>
+      </div>
     </div>
   );
 }

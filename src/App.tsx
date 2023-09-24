@@ -6,9 +6,7 @@ import "./App.css";
 export function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Ticket Purchasing App</h1>
-      </header>
+      <header className="App-header"></header>
       <EventsProvider>
         <TicketPurchasingProvider>
           <Outlet />

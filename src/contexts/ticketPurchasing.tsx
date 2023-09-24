@@ -86,6 +86,8 @@ export function validateCardNumber(cardNumber: string) {
   if (cardNumber.match(amex)) return "American Express";
   const discover = new RegExp("^6(?:011|5[0-9]{2})[0-9]{12}$");
   if (cardNumber.match(discover)) return "Discover";
+  const dinersClub = new RegExp("^3(?:0[0-5]|[68][0-9])[0-9]{11}$");
+  if (cardNumber.match(dinersClub)) return "Diners Club";
   if (cardNumber.length === 0) return "";
   return "Invalid";
 }
