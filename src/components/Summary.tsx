@@ -8,7 +8,7 @@ export function Summary() {
     TicketPurchasingContext
   );
   const navigate = useNavigate();
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = useCallback(() => {
     console.log("Submitting...");
     // start spinner (loading)
 
@@ -54,7 +54,12 @@ export function Summary() {
   }, [selectedEvent, ticketsCounter, cardInfo, navigate]);
 
   return (
-    <div className="Summary">
+    <div
+      className="Summary"
+      style={{
+        flexBasis: "35%",
+      }}
+    >
       <h2>Summary</h2>
       <p>Event: {selectedEvent}</p>
       <p>Tickets: {ticketsCounter}</p>
@@ -72,6 +77,7 @@ export function Summary() {
         onClick={handleSubmit}
       /> */}
       <button
+        className="Purchase-Tickets-Button"
         onClick={handleSubmit}
         disabled={
           cardInfo.cardType === "" ||
