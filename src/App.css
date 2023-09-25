@@ -55,7 +55,11 @@ body {
   font-size: 20px;
   font-family: "Averta", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.Section h3 {
+  font-size: 15px;
+}
 .Section > h2,
+.Section > h3,
 .Section > label,
 .Section > input,
 .Section > p {
@@ -63,6 +67,13 @@ body {
   flex-basis: 100%;
   flex-wrap: wrap;
   align-content: flex-start;
+}
+.Section > p {
+  font-size: 13px;
+  font-family: "Averta", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #555555;
 }
 
 .Page {
@@ -136,7 +147,7 @@ body {
 }
 
 label {
-  font-size: 14px;
+  font-size: 13px;
   font-family: "Averta", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.2;
@@ -157,6 +168,7 @@ input[type="text"] {
   /* height: 44px; */
   line-height: 35px;
   margin-top: 4px;
+  margin-bottom: 10px;
   outline: none;
   padding: 4px 32px 4px 16px;
   /* width: ; */
@@ -176,6 +188,7 @@ input[type="checkbox"] {
   -o-transform: scale(1); /* Opera */
   transform: scale(1);
   padding: 10px;
+  /* remove default border to be able to style border */
   -moz-appearance: none;
   -webkit-appearance: none;
   -o-appearance: none;
@@ -183,6 +196,16 @@ input[type="checkbox"] {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 2px 0px inset;
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* shamelessly stolen code from ticketmaster */
 .gxFWPY {
   display: inline-block;
   border-radius: 2px;
@@ -239,13 +262,4 @@ input[type="checkbox"] {
 .sc-kuiCay > * {
   margin-right: 8px;
   margin-bottom: 25px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -5,11 +5,31 @@ export function Billing() {
   const { cardInfo, updateCardInfo } = useContext(TicketPurchasingContext);
   console.log(cardInfo);
 
+  const handleNameOnCardChanges = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      updateCardInfo({
+        ...cardInfo,
+        nameOnCard: event.target.value,
+      });
+    },
+    [cardInfo, updateCardInfo]
+  );
+
   const handleCardNumberChanges = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       updateCardInfo({
         ...cardInfo,
         cardNumber: event.target.value,
+      });
+    },
+    [cardInfo, updateCardInfo]
+  );
+
+  const handleExpirationDateChanges = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      updateCardInfo({
+        ...cardInfo,
+        expirationDate: event.target.value,
       });
     },
     [cardInfo, updateCardInfo]
@@ -35,6 +55,15 @@ export function Billing() {
 
   return (
     <div className="Billing ">
+      <div className="Delivery Section">
+        <h2 className="Section-Header">Delivery</h2>
+        <h3>Mobile - Free</h3>
+        <p>
+          Your phone's your ticket. Locate your tickets in your account - or in
+          your app. When you go mobile, your tickets will not be emailed to you
+          or available for print.
+        </p>
+      </div>
       <div className="Payment Section">
         <h2 className="Section-Header">Payment</h2>
         <div data-tid="accepted-cards" className="sc-kuiCay grIRYc">
@@ -70,34 +99,20 @@ export function Billing() {
           ></div>
         </div>
         <label
-          htmlFor="card-number"
+          htmlFor="name-on-card"
           className="Payment-Form-Label"
           // style={{ marginRight: "10px", marginBottom: "20px" }}
         >
-          Card Number
+          Name on Card
         </label>
         <input
           type="text"
-          onChange={handleCardNumberChanges}
+          onChange={handleNameOnCardChanges}
           // onBlur={handleCardNumberBlur}
-          value={cardInfo.cardNumber}
+          value={cardInfo.nameOnCard}
           // style={{ marginBottom: "10px" }}
         />
-        <span>{cardInfo.cardType}</span>
-        <br />
-        <label className="Payment-Form-Label">Security Code</label>
-        <input
-          type="text"
-          onChange={handleSecurityCodeChanges}
-          // onBlur={handleSecurityCodeBlur}
-          value={cardInfo.securityCode}
-          maxLength={3}
-          // style={{ marginBottom: "20px" }}
-        />
-        <span>{cardInfo.securityCodeValid}</span>
-      </div>
-      <div className="Payment Section">
-        <h2 className="Section-Header">Payment</h2>
+        {/* <span>{cardInfo.cardType}</span> */}
         <label
           htmlFor="card-number"
           className="Payment-Form-Label"
@@ -113,7 +128,16 @@ export function Billing() {
           // style={{ marginBottom: "10px" }}
         />
         <span>{cardInfo.cardType}</span>
-        <br />
+        <label className="Payment-Form-Label">Expiration Date</label>
+        <input
+          type="text"
+          onChange={handleExpirationDateChanges}
+          // onBlur={handleSecurityCodeBlur}
+          value={cardInfo.expirationDate}
+          maxLength={8}
+          // style={{ marginBottom: "20px" }}
+        />
+        <div>{cardInfo.expirationDateValid}</div>
         <label className="Payment-Form-Label">Security Code</label>
         <input
           type="text"
@@ -125,34 +149,13 @@ export function Billing() {
         />
         <span>{cardInfo.securityCodeValid}</span>
       </div>
-      <div className="Payment Section">
-        <h2 className="Section-Header">Payment</h2>
-        <label
-          htmlFor="card-number"
-          className="Payment-Form-Label"
-          // style={{ marginRight: "10px", marginBottom: "20px" }}
-        >
-          Card Number
-        </label>
-        <input
-          type="text"
-          onChange={handleCardNumberChanges}
-          // onBlur={handleCardNumberBlur}
-          value={cardInfo.cardNumber}
-          // style={{ marginBottom: "10px" }}
-        />
-        <span>{cardInfo.cardType}</span>
-        <br />
-        <label className="Payment-Form-Label">Security Code</label>
-        <input
-          type="text"
-          onChange={handleSecurityCodeChanges}
-          // onBlur={handleSecurityCodeBlur}
-          value={cardInfo.securityCode}
-          maxLength={3}
-          // style={{ marginBottom: "20px" }}
-        />
-        <span>{cardInfo.securityCodeValid}</span>
+      <div className="Ticket-Insurance Section">
+        <h2 className="Section-Header">Ticket Insurance</h2>
+        <p>
+          Get reimbursed up to 100% with Event Ticket Insurance for only $28.00
+          per ticket ($56.00 total). *Offer not available after purchase is
+          finalized.
+        </p>
       </div>
     </div>
   );

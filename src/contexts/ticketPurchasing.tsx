@@ -1,10 +1,13 @@
 import { createContext, useCallback, useMemo, useState } from "react";
 
 export type CardInfoType = {
+  nameOnCard: string;
   cardNumber: string;
   cardType: string;
   securityCode: string;
   securityCodeValid: boolean;
+  expirationDate: string;
+  expirationDateValid: boolean;
 };
 
 export type TicketPurchasingContextType = {
@@ -27,10 +30,13 @@ export function TicketPurchasingProvider({
   const [ticketsCounter, setTicketsCounter] = useState(0);
   const [selectedEvent, setSelectedEvent] = useState("");
   const [cardInfo, setCardInfo] = useState({
+    nameOnCard: "",
     cardNumber: "",
     cardType: "",
     securityCode: "",
     securityCodeValid: false,
+    expirationDate: "",
+    expirationDateValid: false,
   });
 
   const updateTicketsCounter = useCallback((ticketsCounter: number) => {
@@ -44,11 +50,17 @@ export function TicketPurchasingProvider({
   }, []);
 
   const updateCardInfo = useCallback((cardInfo: CardInfoType) => {
-    const { cardNumber, securityCode } = cardInfo;
+    const { expirationDate, cardNumber, securityCode } = cardInfo;
     const cardType = validateCardNumber(cardNumber);
     const securityCodeValid =
       securityCode.match(new RegExp("^[0-9]{3,4}$")) !== null;
-    setCardInfo({ ...cardInfo, cardType, securityCodeValid });
+    const expirationDateValid = validateExpirationDate(expirationDate);
+    setCardInfo({
+      ...cardInfo,
+      cardType,
+      securityCodeValid,
+      expirationDateValid,
+    });
   }, []);
 
   const value = useMemo(() => {
@@ -90,4 +102,12 @@ export function validateCardNumber(cardNumber: string) {
   if (cardNumber.match(dinersClub)) return "Diners Club";
   if (cardNumber.length === 0) return "";
   return "Invalid";
+}
+
+export function validateExpirationDate(expirationDate: string) {
+  const expirationDateValid =
+    expirationDate.match(
+      new RegExp("^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$")
+    ) !== null && new Date(expirationDate) > new Date();
+  return expirationDateValid;
 }
